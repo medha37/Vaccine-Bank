@@ -5,7 +5,7 @@ class Main extends Component {
   render() {
     return (
       <div id="content">
-        <h1>Add Product</h1>
+        <h3>Add Vaccine</h3>
         <form onSubmit={(event) => {
           event.preventDefault()
           const name = this.productName.value
@@ -18,7 +18,7 @@ class Main extends Component {
               type="text"
               ref={(input) => { this.productName = input }}
               className="form-control"
-              placeholder="Product Name"
+              placeholder="vaccine Name"
               required />
           </div>
           <div className="form-group mr-sm-2">
@@ -27,45 +27,48 @@ class Main extends Component {
               type="text"
               ref={(input) => { this.productPrice = input }}
               className="form-control"
-              placeholder="Product Price"
+              placeholder="vaccine Price"
               required />
           </div>
-          <button type="submit" className="btn btn-primary">Add Product</button>
+          <button type="submit" className="btn btn-primary">Add</button>
         </form>
         <p>&nbsp;</p>
-        <h2>Buy Product</h2>
+        <h3>Take Vaccine</h3>
         <table className="table">
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Name</th>
+              <th scope="col">Name of Vaccine</th>
               <th scope="col">Price</th>
               <th scope="col">Owner</th>
               <th scope="col"></th>
             </tr>
           </thead>
           <tbody id="productList">
-            <tr>
-              <th scope="row">1</th>
-              <td>iPhone x</td>
-              <td>1 Eth</td>
-              <td>0x39C7BC5496f4eaaa1fF75d88E079C22f0519E7b9</td>
-              <td><button className="buyButton">Buy</button></td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Macbook Pro</td>
-              <td>3 eth</td>
-              <td>0x39C7BC5496f4eaaa1fF75d88E079C22f0519E7b9</td>
-              <td><button className="buyButton">Buy</button></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Airpods</td>
-              <td>0.5 eth</td>
-              <td>0x39C7BC5496f4eaaa1fF75d88E079C22f0519E7b9</td>
-              <td><button className="buyButton">Buy</button></td>
-            </tr>
+            { this.props.products.map((product, key) => {
+              return(
+                <tr key={key}>
+                  <th scope="row">{product.id.toString()}</th>
+                  <td>{product.name}</td>
+                  <td>{window.web3.utils.fromWei(product.price.toString(), 'Ether')} Eth</td>
+                  <td>{product.owner}</td>
+                  <td>
+                    { !product.purchased
+                      ? <button className="btn btn-primary"
+                          name={product.id}
+                          value={product.price}
+                          onClick={(event) => {
+                            this.props.purchaseProduct(event.target.name, event.target.value)
+                          }}
+                        >
+                          Take
+                        </button>
+                      : null
+                    }
+                    </td>
+                </tr>
+              )
+            })}
           </tbody>
         </table>
       </div>
