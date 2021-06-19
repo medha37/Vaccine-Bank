@@ -4,13 +4,14 @@ html {
 }
 
 body{
-    background-color: ghostwhite;
+    background-color: #454545;
     background-image: url(../bg.jpg);
     box-shadow: inset 0 0 0 1000px rgb(0 0 0 / 60%);
     color: white;
     background-repeat: no-repeat; 
     background-size: cover; 
-    height: 100%;
+    object-fit: contain;
+    height: auto;
     margin: 0;
 }
 
