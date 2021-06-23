@@ -5,8 +5,8 @@ html {
 
 body{
     background-color: #454545;
-    background-image: url(../bg.jpg);
-    box-shadow: inset 0 0 0 1000px rgb(0 0 0 / 60%);
+    background-image: url(../bg-1.jpg);
+    /*box-shadow: inset 0 0 0 1000px rgb(0 0 0 / 60%);*/
     color: white;
     background-repeat: no-repeat; 
     background-size: cover; 

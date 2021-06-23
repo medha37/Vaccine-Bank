@@ -18,7 +18,7 @@ class Main extends Component {
               type="text"
               ref={(input) => { this.productName = input }}
               className="form-control"
-              placeholder="vaccine Name"
+              placeholder="Vaccine Name"
               required />
           </div>
           <div className="form-group mr-sm-2">
@@ -27,13 +27,13 @@ class Main extends Component {
               type="text"
               ref={(input) => { this.productPrice = input }}
               className="form-control"
-              placeholder="vaccine Price"
+              placeholder="Vaccine Price (in Eth) "
               required />
           </div>
           <button type="submit" className="btn btn-primary">Add</button>
         </form>
         <p>&nbsp;</p>
-        <h3>Take Vaccine</h3>
+        <h3>Taken Vaccine</h3>
         <table className="table">
           <thead>
             <tr>
